@@ -1,1 +1,4 @@
-# rock-paper-scissors
+# Rock Paper Scissors
+
+## Description
+Basic Rock Paper Scissors game developed using JavaScript
