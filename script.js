@@ -46,49 +46,49 @@ function playRound() {
         case "rock":
             if (computerSelection === "paper"){
                 computerScore++;
-                console.log("You lost that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose paper so you lost that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "scissors"){
                 humanScore++;
-                console.log("You won that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose scissors so you won that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
-                console.log("It was a tie")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose rock so it was a tie")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
         case "paper":
             if (computerSelection === "scissors"){
                 computerScore++;
-                console.log("You lost that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose scissors so you lost that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "rock"){
                 humanScore++;
-                console.log("You won that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose rock so you won that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
-                console.log("It was a tie")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose paper so it was a tie")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
         case "scissors":
             if (computerSelection === "rock"){
                 computerScore++;
-                console.log("You lost that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose rock so you lost that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "paper"){
                 humanScore++;
-                console.log("You won that round")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose paper so you won that round")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
-                console.log("It was a tie")
-                console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
+                alert("Computer chose scissors so it was a tie")
+                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
     }
@@ -99,26 +99,24 @@ function playGame(){
     let count = 0
     while (count < 5){
         playRound()
-        let go = prompt("Type y to play the next round")
-        while (go != "y"){
-            go = prompt("Type y to play the next round")
-        }
         count++
     }
     if (humanScore > computerScore){
         humanScore = 0
         computerScore = 0
-        return console.log("Congrats you won")
+        alert("Congrats you won")
+        return
     }
     if (computerScore > humanScore){
         humanScore = 0
         computerScore = 0
-        return console.log("You lost RIP")
+        alert("You lost RIP")
+        return
     }
 
     humanScore = 0
     computerScore = 0
-    return console.log("Lame it was a tie")
+    alert("Lame it was a tie")
 }
 
 playGame()
