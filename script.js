@@ -44,40 +44,40 @@ function playRound(humanSelection) {
         case "rock":
             if (computerSelection === "paper"){
                 computerScore++;
-                alert("Computer chose paper so you lost that round")
+                roundDescription.textContent = "Computer chose paper so you lost that round"
             }
             else if (computerSelection === "scissors"){
                 humanScore++;
-                alert("Computer chose scissors so you won that round")
+                roundDescription.textContent = "Computer chose scissors so you won that round"
             }
             else{
-                alert("Computer chose rock so it was a tie")
+                roundDescription.textContent = "Computer chose rock so it was a tie"
             }
             break
         case "paper":
             if (computerSelection === "scissors"){
                 computerScore++;
-                alert("Computer chose scissors so you lost that round")
+                roundDescription.textContent = "Computer chose scissors so you lost that round"
             }
             else if (computerSelection === "rock"){
                 humanScore++;
-                alert("Computer chose rock so you won that round")
+                roundDescription.textContent = "Computer chose rock so you won that round"
             }
             else{
-                alert("Computer chose paper so it was a tie")
+                roundDescription.textContent = "Computer chose paper so it was a tie"
             }
             break
         case "scissors":
             if (computerSelection === "rock"){
                 computerScore++;
-                alert("Computer chose rock so you lost that round")
+                roundDescription.textContent = "Computer chose rock so you lost that round"
             }
             else if (computerSelection === "paper"){
                 humanScore++;
-                alert("Computer chose paper so you won that round")
+                roundDescription.textContent = "Computer chose paper so you won that round"
             }
             else{
-                alert("Computer chose scissors so it was a tie")
+                roundDescription.textContent = "Computer chose scissors so it was a tie"
             }
             break
     }
@@ -88,6 +88,9 @@ const container = document.querySelector("#container")
 
 const score = document.createElement('h2')
 container.append(score)
+
+const roundDescription = document.createElement('p')
+container.append(roundDescription)
 
 function updateScore(){
     score.textContent = `Human Score: ${humanScore}\nComputer Score: ${computerScore}`
