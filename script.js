@@ -38,85 +38,97 @@ let humanScore = 0
 let computerScore = 0
 
 // Logic to play a round
-function playRound() {
-    const  humanSelection = getHumanChoice()
-    const computerSelection = getComputerChoice()
-
+function playRound(humanSelection) {
+    computerSelection = getComputerChoice()
     switch (humanSelection) {
         case "rock":
             if (computerSelection === "paper"){
                 computerScore++;
                 alert("Computer chose paper so you lost that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "scissors"){
                 humanScore++;
                 alert("Computer chose scissors so you won that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
                 alert("Computer chose rock so it was a tie")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
         case "paper":
             if (computerSelection === "scissors"){
                 computerScore++;
                 alert("Computer chose scissors so you lost that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "rock"){
                 humanScore++;
                 alert("Computer chose rock so you won that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
                 alert("Computer chose paper so it was a tie")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
         case "scissors":
             if (computerSelection === "rock"){
                 computerScore++;
                 alert("Computer chose rock so you lost that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else if (computerSelection === "paper"){
                 humanScore++;
                 alert("Computer chose paper so you won that round")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             else{
                 alert("Computer chose scissors so it was a tie")
-                alert(`Your score: ${humanScore}\nComputer score: ${computerScore}`)
             }
             break
     }
 }
 
-// Function to play an entire game
-function playGame(){
-    let count = 0
-    while (count < 5){
-        playRound()
-        count++
-    }
-    if (humanScore > computerScore){
-        humanScore = 0
-        computerScore = 0
-        alert("Congrats you won")
-        return
-    }
-    if (computerScore > humanScore){
-        humanScore = 0
-        computerScore = 0
-        alert("You lost RIP")
-        return
-    }
+// DOM Manipulation
+const container = document.querySelector("#container")
 
-    humanScore = 0
-    computerScore = 0
-    alert("Lame it was a tie")
+const score = document.createElement('h2')
+container.append(score)
+
+function updateScore(){
+    score.textContent = `Human Score: ${humanScore}\nComputer Score: ${computerScore}`
 }
 
-playGame()
+function gameState(){
+    if (humanScore === 5) {
+        score.textContent = "YOU WON!"
+        humanScore = 0
+        computerScore = 0
+    }
+    else if (computerScore === 5) {
+        score.textContent = "You lost :("
+        humanScore = 0
+        computerScore = 0
+    }
+    else {
+        updateScore()
+    }
+}
+
+gameState()
+
+const rock = document.createElement("button")
+rock.textContent = "Rock"
+const paper = document.createElement("button")
+paper.textContent = "Paper"
+const scissors = document.createElement("button")
+scissors.textContent = "Scissors"
+
+container.append(rock, paper, scissors)
+
+rock.addEventListener("click", () => {
+    playRound("rock")
+    gameState()
+})
+paper.addEventListener("click", () => {
+    playRound("paper")
+    gameState()
+})
+scissors.addEventListener("click", () => {
+    playRound("scissors")
+    gameState()
+})
